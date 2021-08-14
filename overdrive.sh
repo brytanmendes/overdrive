@@ -189,6 +189,10 @@ download() {
   dir="$Author - $Title"
   >&2 printf 'Creating directory %s\n' "$dir"
   mkdir -p "$dir"
+  >&2 printf 'Setting bookAuthor and bookTitle to %s\n' "$dir"
+  set bookAuthor to "$Author"
+  set bookTitle to "$Title"
+  >&2 return {hazelOutputAttributes:(bookAuthor,bookTitle)}
 
   while read -r path; do
     # delete from path up until the last hyphen to the get Part0N.mp3 suffix
